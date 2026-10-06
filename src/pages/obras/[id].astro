@@ -1,0 +1,97 @@
+---
+/* =========================================================
+   obras/[id].astro — UNA plantilla que fabrica TODAS las fichas.
+   Los corchetes en el nombre del archivo significan "esto cambia":
+   Astro crea /obras/grieta-oro, /obras/circulo, etc.
+   ========================================================= */
+import { Image } from 'astro:assets';
+import { getCollection, render } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import { enlaceWhatsApp } from '../../config';
+
+// getStaticPaths le dice a Astro QUÉ páginas crear: una por obra
+export async function getStaticPaths() {
+  const obras = await getCollection('obras');
+  return obras.map((obra) => ({
+    params: { id: obra.id },
+    props: { obra },
+  }));
+}
+
+const { obra } = Astro.props;
+const { titulo, serie, tecnica, imagen, alt, anio, medidas, estado } = obra.data;
+
+// El texto de la obra (lo que está debajo de los datos en el archivo .md)
+const { Content } = await render(obra);
+
+// Otras obras de la misma serie, para seguir mirando
+const relacionadas = (await getCollection('obras'))
+  .filter((o) => o.data.serie === serie && o.id !== obra.id)
+  .slice(0, 3);
+
+const textosEstado = {
+  'por-encargo': 'Disponible por encargo',
+  disponible: 'Disponible',
+  vendida: 'Vendida',
+};
+
+const whatsapp = enlaceWhatsApp(
+  `Hola Sofía, vi la obra "${titulo}" en tu web y me interesa una obra así.`
+);
+---
+
+<Base titulo={titulo} descripcion={`${titulo}, obra de Sofía Juarros. ${tecnica}. Disponible por encargo en Buenos Aires.`}>
+  <div class="ficha">
+    <a href="/#obras" class="volver">← Volver a obras</a>
+
+    <div class="ficha-grid">
+      <!-- Columna izquierda: la obra -->
+      <div class="ficha-imagen">
+        <Image src={imagen} alt={alt} loading="eager" />
+      </div>
+
+      <!-- Columna derecha: la cartela y la acción -->
+      <div class="ficha-info">
+        <p class="kicker">Serie {serie}</p>
+        <h1 class="ficha-titulo"><em>{titulo}</em></h1>
+
+        <dl class="ficha-datos">
+          {anio && <div><dt>Año</dt><dd>{anio}</dd></div>}
+          <div><dt>Técnica</dt><dd>{tecnica}</dd></div>
+          {medidas && <div><dt>Medidas</dt><dd>{medidas}</dd></div>}
+          <div><dt>Estado</dt><dd><span class="estado">{textosEstado[estado]}</span></dd></div>
+        </dl>
+
+        <div class="ficha-texto">
+          <Content />
+        </div>
+
+        <a class="button button-solid" href={whatsapp} target="_blank" rel="noopener">
+          Quiero una obra como esta
+        </a>
+
+        <ul class="ficha-garantias">
+          <li>Cada obra se pinta a la medida de tu espacio</li>
+          <li>Pago en efectivo o transferencia, con seña</li>
+          <li>Entrega en Buenos Aires · envíos a todo el país</li>
+        </ul>
+      </div>
+    </div>
+
+    {relacionadas.length > 0 && (
+      <section class="relacionadas">
+        <h2 class="subtitulo">Más de la serie <em>{serie}</em></h2>
+        <div class="relacionadas-grid">
+          {relacionadas.map((o) => (
+            <figure class="obra">
+              <a href={`/obras/${o.id}`}>
+                <Image src={o.data.imagen} alt={o.data.alt} />
+              </a>
+              <figcaption><em>{o.data.titulo}</em></figcaption>
+            </figure>
+          ))}
+        </div>
+      </section>
+    )}
+  </div>
+</Base>

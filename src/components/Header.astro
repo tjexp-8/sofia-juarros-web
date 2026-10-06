@@ -1,0 +1,44 @@
+---
+/* =========================================================
+   Header.astro — la cabecera de TODAS las páginas.
+   Antes había que copiarla en cada archivo; ahora vive aquí.
+   La parte entre los guiones (---) es JavaScript que se ejecuta
+   al construir la web; lo de abajo es el HTML.
+   ========================================================= */
+import { SITE } from '../config';
+
+// La lista de enlaces del menú, escrita una sola vez
+const enlaces = [
+  { texto: 'Obras', url: '/#obras' },  { texto: 'Encargos', url: '/encargos' },
+  { texto: 'Sobre mí', url: '/sobre-mi' },
+  { texto: 'Contacto', url: '/contacto' },
+];
+
+// Astro.url nos dice en qué página estamos (para marcar el enlace activo)
+const paginaActual = Astro.url.pathname.replace(/\/$/, '');
+---
+
+<header class="site-header">
+  <a href="/" class="logo">{SITE.nombre}</a>
+
+  <nav class="nav">
+    {enlaces.map((enlace) => (
+      <a href={enlace.url} aria-current={paginaActual === enlace.url ? 'page' : undefined}>
+        {enlace.texto}
+      </a>
+    ))}
+  </nav>
+
+  <!-- Botón del menú en el móvil -->
+  <button class="menu-toggle" aria-expanded="false" aria-controls="menu-movil" aria-label="Abrir menú">
+    <span></span><span></span>
+  </button>
+
+  <!-- Menú a pantalla completa (solo en el móvil) -->
+  <div class="menu-movil" id="menu-movil">
+    <nav>
+      {enlaces.map((enlace) => <a href={enlace.url}>{enlace.texto}</a>)}
+    </nav>
+    <p class="menu-movil-pie">Buenos Aires · Obras por encargo</p>
+  </div>
+</header>

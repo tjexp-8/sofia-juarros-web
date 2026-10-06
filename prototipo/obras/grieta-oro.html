@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="es-AR">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grieta de oro — Sofía Juarros</title>
+    <meta name="description" content="Grieta de oro, obra de Sofía Juarros: lienzo negro con relieve atravesado por una grieta dorada. Disponible por encargo.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+
+    <!-- "../" = sube una carpeta: de /obras a la carpeta principal -->
+    <link rel="stylesheet" href="../css/styles.css">
+  </head>
+  <body>
+
+    <header class="site-header">
+      <a href="../index.html" class="logo">Sofía Juarros</a>
+      <nav class="nav">
+        <a href="../index.html#obras">Obras</a>
+        <a href="../encargos.html">Encargos</a>
+        <a href="../sobre-mi.html">Sobre mí</a>
+        <a href="../contacto.html">Contacto</a>
+      </nav>
+
+      <!-- Botón del menú en el móvil -->
+      <button class="menu-toggle" aria-expanded="false" aria-controls="menu-movil" aria-label="Abrir menú">
+        <span></span><span></span>
+      </button>
+
+      <!-- Menú a pantalla completa (solo en el móvil) -->
+      <div class="menu-movil" id="menu-movil">
+        <nav>
+          <a href="../index.html#obras">Obras</a>
+          <a href="../encargos.html">Encargos</a>
+          <a href="../sobre-mi.html">Sobre mí</a>
+          <a href="../contacto.html">Contacto</a>
+        </nav>
+        <p class="menu-movil-pie">Buenos Aires · Obras por encargo</p>
+      </div>
+    </header>
+
+    <main class="ficha">
+
+      <a href="../index.html#obras" class="volver">← Volver a obras</a>
+
+      <div class="ficha-grid">
+
+        <!-- Columna izquierda: la obra -->
+        <div class="ficha-imagen">
+          <img src="../images/obras/grieta-oro.jpg" alt="Lienzo negro con relieve atravesado por una grieta vertical dorada" width="773" height="1063">
+        </div>
+
+        <!-- Columna derecha: la cartela y la acción -->
+        <div class="ficha-info">
+          <p class="kicker">Serie Oro</p>
+          <h1 class="ficha-titulo"><em>Grieta de oro</em></h1>
+
+          <dl class="ficha-datos">
+            <div><dt>Año</dt><dd>2026</dd></div>
+            <div><dt>Técnica</dt><dd>Textura en relieve y pan de oro</dd></div>
+            <div><dt>Medidas</dt><dd>100 × 140 cm</dd></div>
+            <div><dt>Estado</dt><dd><span class="estado">Disponible por encargo</span></dd></div>
+          </dl>
+
+          <p class="ficha-texto">
+            Una superficie negra trabajada en relieve, abierta por una única grieta de oro.
+            Lo que se rompe también puede volverse lo más valioso de la obra.
+          </p>
+
+          <!-- WhatsApp de Sofía: 549 + 11 + número (sin el 15) -->
+          <a class="button button-solid"
+             href="https://wa.me/5491138207312?text=Hola%20Sof%C3%ADa%2C%20vi%20la%20obra%20%22Grieta%20de%20oro%22%20en%20tu%20web%20y%20me%20interesa%20una%20obra%20as%C3%AD."
+             target="_blank" rel="noopener">
+            Quiero una obra como esta
+          </a>
+
+          <ul class="ficha-garantias">
+            <li>Cada obra se pinta a la medida de tu espacio</li>
+            <li>Pago en efectivo o transferencia, con seña</li>
+            <li>Entrega en Buenos Aires · envíos a todo el país</li>
+          </ul>
+        </div>
+
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <p>© 2026 Sofía Juarros · Buenos Aires, Argentina</p>
+    </footer>
+
+    <script src="../js/menu.js" defer></script>
+  </body>
+</html>

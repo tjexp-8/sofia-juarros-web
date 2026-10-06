@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="es-AR">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sofía Juarros — Arte abstracto contemporáneo</title>
+    <meta name="description" content="Obras abstractas por encargo de Sofía Juarros, artista visual en Buenos Aires.">
+
+    <!-- Tipografías: Instrument Serif (títulos) e Inter (textos) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+
+    <!-- Nuestros estilos -->
+    <link rel="stylesheet" href="css/styles.css">
+  </head>
+  <body>
+
+    <header class="site-header">
+      <a href="index.html" class="logo">Sofía Juarros</a>
+      <nav class="nav">
+        <a href="index.html#obras">Obras</a>
+        <a href="encargos.html">Encargos</a>
+        <a href="sobre-mi.html">Sobre mí</a>
+        <a href="contacto.html">Contacto</a>
+      </nav>
+
+      <!-- Botón del menú en el móvil -->
+      <button class="menu-toggle" aria-expanded="false" aria-controls="menu-movil" aria-label="Abrir menú">
+        <span></span><span></span>
+      </button>
+
+      <!-- Menú a pantalla completa (solo en el móvil) -->
+      <div class="menu-movil" id="menu-movil">
+        <nav>
+          <a href="index.html#obras">Obras</a>
+          <a href="encargos.html">Encargos</a>
+          <a href="sobre-mi.html">Sobre mí</a>
+          <a href="contacto.html">Contacto</a>
+        </nav>
+        <p class="menu-movil-pie">Buenos Aires · Obras por encargo</p>
+      </div>
+    </header>
+
+    <main>
+      <!-- PORTADA: empieza con un primer plano de la obra y se aleja al hacer scroll -->
+      <section class="hero">
+        <div class="hero-bg"></div>
+
+        <h1 class="hero-title">
+          <span class="hero-line">Sofía</span>
+          <em class="hero-line">Juarros</em>
+        </h1>
+
+        <div class="hero-frame">
+          <img class="hero-img" src="images/obras/grieta-oro.jpg" alt="Grieta de oro: lienzo negro con relieve atravesado por una grieta dorada" width="773" height="1063">
+        </div>
+
+        <div class="hero-content">
+          <p class="kicker">Artista visual · Buenos Aires</p>
+          <p class="hero-text">Arte abstracto contemporáneo, creado para tu espacio.</p>
+          <a href="encargos.html" class="button">Encargá tu obra</a>
+        </div>
+
+        <p class="hero-hint">Deslizá</p>
+      </section>
+
+      <!-- SERIE TEXTURAS: recorrido horizontal, como caminar por una galería -->
+      <section class="horizontal">
+        <div class="horizontal-track">
+          <div class="horizontal-intro">
+            <p class="kicker">Serie</p>
+            <h2 class="section-title"><em>Texturas</em></h2>
+            <p>Relieve, materia y luz. Obras que cambian según cómo las ilumina el día.</p>
+          </div>
+
+          <figure class="h-obra">
+            <img src="images/obras/textura-espiral.jpg" alt="Relieve negro de espirales concéntricas con una onda central brillante" width="801" height="989">
+            <figcaption><em>Espiral</em></figcaption>
+          </figure>
+          <figure class="h-obra">
+            <img src="images/obras/textura-onda.jpg" alt="Onda de relieve negro sobre fondo negro, como una vibración de sonido" width="823" height="1033">
+            <figcaption><em>Onda</em></figcaption>
+          </figure>
+          <figure class="h-obra">
+            <img src="images/obras/textura-radial.jpg" alt="Textura radial de líneas blancas y negras que parten del centro" width="795" height="983">
+            <figcaption><em>Radial</em></figcaption>
+          </figure>
+          <figure class="h-obra">
+            <a href="obras/grieta-oro.html">
+              <img src="images/obras/grieta-oro.jpg" alt="Lienzo negro con relieve atravesado por una grieta vertical dorada" width="773" height="1063">
+            </a>
+            <figcaption><em>Grieta de oro</em></figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <!-- GALERÍA: los títulos son provisionales hasta confirmarlos con Sofía -->
+      <section class="obras" id="obras">
+        <div class="obras-intro">
+          <p class="kicker">Obra seleccionada</p>
+          <h2 class="section-title">Gesto, textura y <em>materia</em></h2>
+        </div>
+
+        <div class="galeria">
+          <figure class="obra">
+            <img src="images/obras/gesto-vertical.jpg" alt="Gestos negros curvos sobre fondo blanco con textura, formato vertical" width="541" height="1289" loading="lazy">
+            <figcaption><em>Gesto vertical</em> · Acrílico con textura</figcaption>
+          </figure>
+
+          <figure class="obra">
+            <a href="obras/grieta-oro.html">
+              <img src="images/obras/grieta-oro.jpg" alt="Lienzo negro con relieve atravesado por una grieta vertical dorada" width="773" height="1063" loading="lazy">
+            </a>
+            <figcaption><em>Grieta de oro</em> · Textura y pan de oro</figcaption>
+          </figure>
+
+          <figure class="obra">
+            <img src="images/obras/circulo.jpg" alt="Círculo negro de pinceladas salpicadas sobre fondo crudo" width="823" height="629" loading="lazy">
+            <figcaption><em>Círculo</em> · Acrílico sobre lienzo</figcaption>
+          </figure>
+
+          <figure class="obra">
+            <img src="images/obras/textura-espiral.jpg" alt="Relieve negro de espirales concéntricas con una onda central brillante" width="801" height="989" loading="lazy">
+            <figcaption><em>Espiral</em> · Textura en relieve</figcaption>
+          </figure>
+
+          <figure class="obra">
+            <img src="images/obras/diptico-oro.jpg" alt="Díptico de manchas negras, blancas y grises cruzadas por líneas doradas en relieve" width="851" height="573" loading="lazy">
+            <figcaption><em>Díptico en oro</em> · Textura y dorado</figcaption>
+          </figure>
+
+          <figure class="obra">
+            <img src="images/obras/forma-gris.jpg" alt="Forma orgánica blanca translúcida sobre fondo gris oscuro" width="689" height="1011" loading="lazy">
+            <figcaption><em>Forma</em> · Técnica mixta</figcaption>
+          </figure>
+
+          <figure class="obra">
+            <img src="images/obras/textura-onda.jpg" alt="Onda de relieve negro sobre fondo negro, como una vibración de sonido" width="823" height="1033" loading="lazy">
+            <figcaption><em>Onda</em> · Textura en relieve</figcaption>
+          </figure>
+
+          <figure class="obra">
+            <img src="images/obras/gesto-cobre.jpg" alt="Manchas y chorreados negros sobre fondo cobre" width="831" height="587" loading="lazy">
+            <figcaption><em>Cobre</em> · Acrílico sobre lienzo</figcaption>
+          </figure>
+
+          <figure class="obra">
+            <img src="images/obras/textura-radial.jpg" alt="Textura radial de líneas blancas y negras que parten del centro" width="795" height="983" loading="lazy">
+            <figcaption><em>Radial</em> · Textura en relieve</figcaption>
+          </figure>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p>© 2026 Sofía Juarros · Buenos Aires, Argentina</p>
+    </footer>
+
+    <!-- El círculo "Ver" que sigue al ratón -->
+    <div class="cursor" aria-hidden="true">Ver</div>
+
+    <!-- Librerías de animación: GSAP + ScrollTrigger (scroll) y Lenis (scroll suave) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+    <script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js" defer></script>
+    <!-- Nuestro código -->
+    <script src="js/main.js" defer></script>
+    <script src="js/menu.js" defer></script>
+  </body>
+</html>

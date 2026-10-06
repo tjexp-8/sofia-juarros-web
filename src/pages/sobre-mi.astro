@@ -1,0 +1,72 @@
+---
+import { Image } from 'astro:assets';
+import Base from '../layouts/Base.astro';
+import CtaFinal from '../components/CtaFinal.astro';
+import fotoOro from '../assets/sofia/aplicando-oro.jpg';
+import fotoRojo from '../assets/sofia/pintando-rojo.jpg';
+import fotoAzul from '../assets/sofia/taller-azul.jpg';
+---
+
+<Base titulo="Sobre mí" descripcion="Sofía Juarros, artista visual en Buenos Aires. Pintura abstracta con textura, materia y pan de oro, creada a mano en su taller.">
+
+  <!-- TEXTOS PROVISIONALES: reemplazar por la bio real de Sofía -->
+
+  <section class="about-intro">
+    <div class="about-intro-texto">
+      <p class="kicker" data-reveal>Sobre mí</p>
+      <h1 class="section-title" data-reveal>Sofía <em>Juarros</em></h1>
+      <p data-reveal>
+        Soy artista visual y trabajo en mi taller de Buenos Aires.
+        Pinto obra abstracta donde la textura, el relieve y el pan de oro
+        son tan importantes como el color.
+      </p>
+      <p data-reveal>
+        Cada obra se construye a mano, capa por capa, y está pensada para
+        convivir con el espacio que la recibe.
+      </p>
+    </div>
+
+    <figure class="about-foto about-foto-grande" data-reveal="imagen">
+      <Image src={fotoOro} alt="Sofía aplicando pan de oro sobre una obra negra con textura" loading="eager" />
+    </figure>
+  </section>
+
+  <!-- FRASE PROVISIONAL: Sofía tiene que aprobarla o dar la suya -->
+  <section class="about-frase">
+    <blockquote data-reveal>
+      “Me interesa lo que se puede <em>tocar</em>: la materia, la grieta,
+      la luz que cambia sobre una superficie.”
+    </blockquote>
+  </section>
+
+  <section class="about-proceso">
+    <div class="about-proceso-texto" data-reveal>
+      <p class="kicker">El proceso</p>
+      <h2 class="subtitulo">Del taller <em>a tu pared</em></h2>
+      <p>
+        Trabajo en formatos grandes, muchas veces directamente sobre la mesa
+        o el caballete. Primero preparo la superficie y la textura; después
+        llegan el color, el gesto y, a veces, el oro.
+      </p>
+    </div>
+
+    <div class="about-proceso-fotos">
+      <figure class="about-foto" data-reveal="imagen">
+        <Image src={fotoRojo} alt="Sofía trabajando la textura de una obra roja de gran formato en el caballete" />
+        <figcaption>Textura sobre rojo</figcaption>
+      </figure>
+      <figure class="about-foto about-foto-desfasada" data-reveal="imagen">
+        <Image src={fotoAzul} alt="Sofía dibujando líneas sobre un lienzo azul de gran formato en su taller" />
+        <figcaption>Línea sobre azul</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <CtaFinal
+    titulo="Creemos una obra"
+    destacado="para vos"
+    texto="Contame sobre tu espacio y empezamos."
+    boton="Ver cómo funciona"
+    url="/encargos"
+  />
+</Base>

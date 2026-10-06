@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="es-AR">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contacto — Sofía Juarros</title>
+    <meta name="description" content="Contactá a Sofía Juarros, artista visual en Buenos Aires, para encargar una obra o consultar por su trabajo.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/styles.css">
+  </head>
+  <body>
+
+    <header class="site-header">
+      <a href="index.html" class="logo">Sofía Juarros</a>
+      <nav class="nav">
+        <a href="index.html#obras">Obras</a>
+        <a href="encargos.html">Encargos</a>
+        <a href="sobre-mi.html">Sobre mí</a>
+        <a href="contacto.html">Contacto</a>
+      </nav>
+
+      <!-- Botón del menú en el móvil -->
+      <button class="menu-toggle" aria-expanded="false" aria-controls="menu-movil" aria-label="Abrir menú">
+        <span></span><span></span>
+      </button>
+
+      <!-- Menú a pantalla completa (solo en el móvil) -->
+      <div class="menu-movil" id="menu-movil">
+        <nav>
+          <a href="index.html#obras">Obras</a>
+          <a href="encargos.html">Encargos</a>
+          <a href="sobre-mi.html">Sobre mí</a>
+          <a href="contacto.html">Contacto</a>
+        </nav>
+        <p class="menu-movil-pie">Buenos Aires · Obras por encargo</p>
+      </div>
+    </header>
+
+    <main>
+      <section class="page-hero">
+        <p class="kicker">Contacto</p>
+        <h1 class="section-title">Hablemos de <em>tu espacio</em></h1>
+        <p class="page-hero-text">
+          Respondo personalmente cada mensaje. La forma más rápida es WhatsApp.
+        </p>
+      </section>
+
+      <section class="contacto">
+        <!-- Cada "tarjeta" es un enlace completo: se puede pulsar en cualquier parte -->
+        <a class="contacto-item" href="https://wa.me/5491138207312?text=Hola%20Sof%C3%ADa%2C%20te%20escribo%20desde%20tu%20web." target="_blank" rel="noopener">
+          <span class="contacto-label">WhatsApp</span>
+          <span class="contacto-valor">+54 9 11 3820-7312</span>
+          <span class="contacto-flecha">→</span>
+        </a>
+
+        <a class="contacto-item" href="https://www.instagram.com/sofiartstudio__/" target="_blank" rel="noopener">
+          <span class="contacto-label">Instagram</span>
+          <span class="contacto-valor">@sofiartstudio__</span>
+          <span class="contacto-flecha">→</span>
+        </a>
+
+        <div class="contacto-item">
+          <span class="contacto-label">Taller</span>
+          <span class="contacto-valor">Buenos Aires, Argentina</span>
+          <span class="contacto-flecha"></span>
+        </div>
+
+        <!-- Email: agregar cuando Sofía confirme cuál usar -->
+      </section>
+
+      <section class="cta-final">
+        <h2 class="section-title">¿Querés una obra <em>a medida</em>?</h2>
+        <p>Mirá cómo funciona un encargo, paso a paso.</p>
+        <a class="button button-solid" href="encargos.html">Ver encargos</a>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p>© 2026 Sofía Juarros · Buenos Aires, Argentina</p>
+    </footer>
+
+    <script src="js/menu.js" defer></script>
+  </body>
+</html>

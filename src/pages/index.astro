@@ -1,0 +1,120 @@
+---
+/* =========================================================
+   index.astro — la portada.
+   Las obras NO se escriben a mano: pedimos la lista de obras
+   y Astro genera el HTML de cada una.
+   ========================================================= */
+import { Image } from 'astro:assets';
+import { getCollection } from 'astro:content';
+import Base from '../layouts/Base.astro';
+import heroImagen from '../assets/obras/grieta-oro.jpg';
+
+// Todas las obras, ordenadas por su campo "orden"
+const obras = (await getCollection('obras')).sort((a, b) => a.data.orden - b.data.orden);
+
+// Solo las de la serie Texturas, para el recorrido horizontal
+const texturas = obras.filter((obra) => obra.data.serie === 'Texturas');
+
+// Disposición "de exposición": cada obra recibe una posición distinta en la pared
+// y una velocidad distinta al hacer scroll (eso crea la sensación de profundidad).
+// Cuando se acaban las 7 posiciones, vuelve a empezar.
+const posiciones = [
+  { clase: 'g-1', velocidad: 6 },
+  { clase: 'g-2', velocidad: -4 },
+  { clase: 'g-3', velocidad: 3 },
+  { clase: 'g-4', velocidad: -6 },
+  { clase: 'g-5', velocidad: 8 },
+  { clase: 'g-6', velocidad: -3 },
+  { clase: 'g-7', velocidad: 5 },
+];
+
+// Convierte 1 en "01", 2 en "02"...
+const numero = (i: number) => String(i + 1).padStart(2, '0');
+---
+
+<Base>
+  <!-- 1. PORTADA: empieza con un primer plano de la obra y se aleja al hacer scroll -->
+  <section class="hero">
+    <div class="hero-bg"></div>
+
+    <h1 class="hero-title">
+      <span class="hero-line">Sofía</span>
+      <em class="hero-line">Juarros</em>
+    </h1>
+
+    <div class="hero-frame">
+      <Image
+        class="hero-img"
+        src={heroImagen}
+        alt="Grieta de oro: lienzo negro con relieve atravesado por una grieta dorada"
+        loading="eager"
+        fetchpriority="high"
+      />
+    </div>
+
+    <div class="hero-content">
+      <p class="kicker">Artista visual · Buenos Aires</p>
+      <p class="hero-text">Arte abstracto contemporáneo, creado para tu espacio.</p>
+      <a href="/encargos" class="button">Encargá tu obra</a>
+    </div>
+
+    <p class="hero-hint">Deslizá</p>
+  </section>
+
+  <!-- 2. MANIFIESTO: las palabras se "encienden" una a una al hacer scroll.
+       TEXTO PROVISIONAL: a revisar con Sofía -->
+  <section class="manifiesto">
+    <p class="kicker">La obra</p>
+    <p class="manifiesto-texto" data-palabras>
+      Cada obra nace de la materia: capas, relieve y gesto. Una grieta que deja pasar
+      la luz, un trazo que no se repite. Piezas únicas, pintadas a mano,
+      para espacios que buscan algo propio.
+    </p>
+  </section>
+
+  <!-- 3. SERIE TEXTURAS: recorrido horizontal, como caminar por una galería -->
+  <section class="horizontal">
+    <div class="horizontal-track">
+      <div class="horizontal-intro">
+        <p class="kicker">Serie</p>
+        <h2 class="section-title"><em>Texturas</em></h2>
+        <p>Relieve, materia y luz. Obras que cambian según cómo las ilumina el día.</p>
+      </div>
+
+      {texturas.map((obra) => (
+        <figure class="h-obra">
+          <a href={`/obras/${obra.id}`}>
+            <Image src={obra.data.imagen} alt={obra.data.alt} loading="eager" />
+          </a>
+          <figcaption><em>{obra.data.titulo}</em></figcaption>
+        </figure>
+      ))}
+    </div>
+  </section>
+
+  <!-- 4. GALERÍA "DE EXPOSICIÓN": obras desalineadas, a distintas velocidades -->
+  <section class="obras" id="obras">
+    <div class="obras-intro">
+      <p class="kicker">Obra seleccionada</p>
+      <h2 class="section-title">Gesto, textura y <em>materia</em></h2>
+    </div>
+
+    <div class="galeria-expo">
+      {obras.map((obra, i) => {
+        const pos = posiciones[i % posiciones.length];
+        return (
+          <figure class={`obra ${pos.clase}`} data-velocidad={pos.velocidad}>
+            <a href={`/obras/${obra.id}`} class="obra-marco">
+              <Image src={obra.data.imagen} alt={obra.data.alt} />
+            </a>
+            <figcaption>
+              <span class="obra-numero">{numero(i)}</span>
+              <em>{obra.data.titulo}</em>
+              <span class="obra-tecnica">{obra.data.tecnica}</span>
+            </figcaption>
+          </figure>
+        );
+      })}
+    </div>
+  </section>
+</Base>

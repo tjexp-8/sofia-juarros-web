@@ -1,0 +1,68 @@
+---
+/* =========================================================
+   Base.astro — el "molde" de todas las páginas.
+   Contiene lo que todas comparten: <head>, tipografías, estilos,
+   cabecera, pie y scripts. Cada página solo aporta su contenido,
+   que aparece donde dice <slot />.
+   ========================================================= */
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { SITE } from '../config';
+import '../styles/global.css';
+
+interface Props {
+  titulo?: string;
+  descripcion?: string;
+}
+
+const { titulo, descripcion = SITE.descripcion } = Astro.props;
+
+// Si la página tiene título propio: "Encargos — Sofía Juarros". Si no, el general.
+const tituloCompleto = titulo
+  ? `${titulo} — ${SITE.nombre}`
+  : `${SITE.nombre} — Arte abstracto contemporáneo`;
+---
+
+<!DOCTYPE html>
+<html lang="es-AR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{tituloCompleto}</title>
+    <meta name="description" content={descripcion} />
+
+    <!-- Tipografías: Instrument Serif (títulos) e Inter (textos) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Activa el modo animado ANTES de pintar la página (evita un parpadeo).
+         is:inline = Astro deja este script tal cual, dentro del HTML. -->
+    <script is:inline>
+      if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        document.documentElement.classList.add('anim');
+      }
+    </script>
+  </head>
+  <body>
+    <Header />
+
+    <main>
+      <slot />
+    </main>
+
+    <Footer />
+
+    <!-- El círculo "Ver" que sigue al ratón -->
+    <div class="cursor" aria-hidden="true">Ver</div>
+
+    <!-- Astro junta y optimiza estos scripts automáticamente -->
+    <script>
+      import '../scripts/menu.js';
+      import '../scripts/animaciones.js';
+    </script>
+  </body>
+</html>

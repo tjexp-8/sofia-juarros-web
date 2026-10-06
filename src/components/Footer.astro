@@ -1,0 +1,47 @@
+---
+/* =========================================================
+   Footer.astro — el pie de TODAS las páginas.
+   Fondo negro, enlaces en columnas y el nombre de Sofía enorme.
+   ========================================================= */
+import { SITE, enlaceWhatsApp } from '../config';
+
+// El año se calcula solo: el 1 de enero no hay que actualizarlo a mano
+const anio = new Date().getFullYear();
+---
+
+<footer class="site-footer">
+  <div class="footer-grid">
+    <div class="footer-col footer-intro">
+      <p class="footer-frase">Obras únicas, pintadas a mano para tu espacio.</p>
+      <a class="footer-cta" href={enlaceWhatsApp('Hola Sofía, te escribo desde tu web.')} target="_blank" rel="noopener">
+        Hablemos <span>→</span>
+      </a>
+    </div>
+
+    <div class="footer-col">
+      <p class="footer-label">Navegación</p>
+      <a href="/#obras">Obras</a>      <a href="/encargos">Encargos</a>
+      <a href="/sobre-mi">Sobre mí</a>
+      <a href="/contacto">Contacto</a>
+    </div>
+
+    <div class="footer-col">
+      <p class="footer-label">Contacto</p>
+      <a href={enlaceWhatsApp('Hola Sofía, te escribo desde tu web.')} target="_blank" rel="noopener">WhatsApp</a>
+      <a href={`https://www.instagram.com/${SITE.instagram}/`} target="_blank" rel="noopener">Instagram</a>
+      <p>{SITE.ciudad}</p>
+    </div>
+  </div>
+
+  <!-- El nombre gigante: cada letra sube al aparecer (decorativo) -->
+  <p class="footer-nombre" aria-hidden="true">
+    {[...'Sofía Juarros'].map((letra) => (
+      <span class="footer-letra">{letra === ' ' ? ' ' : letra}</span>
+    ))}
+  </p>
+
+  <div class="footer-base">
+    <p>© {anio} {SITE.nombre}</p>
+    <a href="#" class="footer-arriba">Volver arriba ↑</a>
+  </div>
+</footer>

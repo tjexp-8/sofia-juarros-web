@@ -1,0 +1,46 @@
+---
+import Base from '../layouts/Base.astro';
+import CtaFinal from '../components/CtaFinal.astro';
+import { SITE, enlaceWhatsApp } from '../config';
+---
+
+<Base titulo="Contacto" descripcion="Contactá a Sofía Juarros, artista visual en Buenos Aires, para encargar una obra o consultar por su trabajo.">
+
+  <section class="page-hero">
+    <p class="kicker" data-reveal>Contacto</p>
+    <h1 class="section-title" data-reveal>Hablemos de <em>tu espacio</em></h1>
+    <p class="page-hero-text" data-reveal>
+      Respondo personalmente cada mensaje. La forma más rápida es WhatsApp.
+    </p>
+  </section>
+
+  <section class="contacto">
+    <a class="contacto-item" href={enlaceWhatsApp('Hola Sofía, te escribo desde tu web.')} target="_blank" rel="noopener">
+      <span class="contacto-label">WhatsApp</span>
+      <span class="contacto-valor">{SITE.whatsappVisible}</span>
+      <span class="contacto-flecha">→</span>
+    </a>
+
+    <a class="contacto-item" href={`https://www.instagram.com/${SITE.instagram}/`} target="_blank" rel="noopener">
+      <span class="contacto-label">Instagram</span>
+      <span class="contacto-valor">@{SITE.instagram}</span>
+      <span class="contacto-flecha">→</span>
+    </a>
+
+    <div class="contacto-item">
+      <span class="contacto-label">Taller</span>
+      <span class="contacto-valor">{SITE.ciudad}</span>
+      <span class="contacto-flecha"></span>
+    </div>
+
+    <!-- Email: agregar en config.ts cuando Sofía confirme cuál usar -->
+  </section>
+
+  <CtaFinal
+    titulo="¿Querés una obra"
+    destacado="a medida?"
+    texto="Mirá cómo funciona un encargo, paso a paso."
+    boton="Ver encargos"
+    url="/encargos"
+  />
+</Base>

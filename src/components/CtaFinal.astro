@@ -1,0 +1,27 @@
+---
+/* El bloque negro de cierre que se repite al final de varias páginas.
+   Recibe sus textos como "props" (propiedades), igual que una etiqueta HTML recibe atributos. */
+interface Props {
+  titulo: string;       // texto normal del título
+  destacado: string;    // parte del título en cursiva
+  texto: string;
+  boton: string;
+  url: string;
+  externo?: boolean;    // true si el enlace abre otra web (WhatsApp)
+}
+
+const { titulo, destacado, texto, boton, url, externo = false } = Astro.props;
+---
+
+<section class="cta-final">
+  <h2 class="section-title">{titulo} <em>{destacado}</em></h2>
+  <p>{texto}</p>
+  <a
+    class="button button-solid"
+    href={url}
+    target={externo ? '_blank' : undefined}
+    rel={externo ? 'noopener' : undefined}
+  >
+    {boton}
+  </a>
+</section>

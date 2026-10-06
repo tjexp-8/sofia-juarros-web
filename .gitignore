@@ -1,0 +1,10 @@
+# Carpetas que se generan solas: no se guardan en Git
+node_modules/
+dist/
+.astro/
+
+# Configuración local de herramientas
+.claude/
+
+# Fotos originales pesadas (se guardan aparte, no en el repositorio)
+fotos-originales/

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="es-AR">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sobre mí — Sofía Juarros</title>
+    <meta name="description" content="Sofía Juarros, artista visual en Buenos Aires. Pintura abstracta con textura, materia y pan de oro, creada a mano en su taller.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/styles.css">
+  </head>
+  <body>
+
+    <header class="site-header">
+      <a href="index.html" class="logo">Sofía Juarros</a>
+      <nav class="nav">
+        <a href="index.html#obras">Obras</a>
+        <a href="encargos.html">Encargos</a>
+        <a href="sobre-mi.html">Sobre mí</a>
+        <a href="contacto.html">Contacto</a>
+      </nav>
+
+      <!-- Botón del menú en el móvil -->
+      <button class="menu-toggle" aria-expanded="false" aria-controls="menu-movil" aria-label="Abrir menú">
+        <span></span><span></span>
+      </button>
+
+      <!-- Menú a pantalla completa (solo en el móvil) -->
+      <div class="menu-movil" id="menu-movil">
+        <nav>
+          <a href="index.html#obras">Obras</a>
+          <a href="encargos.html">Encargos</a>
+          <a href="sobre-mi.html">Sobre mí</a>
+          <a href="contacto.html">Contacto</a>
+        </nav>
+        <p class="menu-movil-pie">Buenos Aires · Obras por encargo</p>
+      </div>
+    </header>
+
+    <main>
+
+      <!-- TEXTOS PROVISIONALES: reemplazar por la bio real de Sofía -->
+
+      <!-- 1. Presentación: texto a la izquierda, foto grande a la derecha -->
+      <section class="about-intro">
+        <div class="about-intro-texto">
+          <p class="kicker" data-reveal>Sobre mí</p>
+          <h1 class="section-title" data-reveal>Sofía <em>Juarros</em></h1>
+          <p data-reveal>
+            Soy artista visual y trabajo en mi taller de Buenos Aires.
+            Pinto obra abstracta donde la textura, el relieve y el pan de oro
+            son tan importantes como el color.
+          </p>
+          <p data-reveal>
+            Cada obra se construye a mano, capa por capa, y está pensada para
+            convivir con el espacio que la recibe.
+          </p>
+        </div>
+
+        <figure class="about-foto about-foto-grande" data-reveal="imagen">
+          <img src="images/sofia/aplicando-oro.jpg" alt="Sofía aplicando pan de oro sobre una obra negra con textura" width="906" height="1600">
+        </figure>
+      </section>
+
+      <!-- 2. La frase que resume su obra -->
+      <section class="about-frase">
+        <blockquote data-reveal>
+          “Me interesa lo que se puede <em>tocar</em>: la materia, la grieta,
+          la luz que cambia sobre una superficie.”
+        </blockquote>
+      </section>
+
+      <!-- 3. El proceso, con fotos del taller -->
+      <section class="about-proceso">
+        <div class="about-proceso-texto" data-reveal>
+          <p class="kicker">El proceso</p>
+          <h2 class="subtitulo">Del taller <em>a tu pared</em></h2>
+          <p>
+            Trabajo en formatos grandes, muchas veces directamente sobre la mesa
+            o el caballete. Primero preparo la superficie y la textura; después
+            llegan el color, el gesto y, a veces, el oro.
+          </p>
+        </div>
+
+        <div class="about-proceso-fotos">
+          <figure class="about-foto" data-reveal="imagen">
+            <img src="images/sofia/pintando-rojo.jpg" alt="Sofía trabajando la textura de una obra roja de gran formato en el caballete" width="704" height="1209" loading="lazy">
+            <figcaption>Textura sobre rojo</figcaption>
+          </figure>
+          <figure class="about-foto about-foto-desfasada" data-reveal="imagen">
+            <img src="images/sofia/taller-azul.jpg" alt="Sofía dibujando líneas sobre un lienzo azul de gran formato en su taller" width="719" height="1280" loading="lazy">
+            <figcaption>Línea sobre azul</figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <!-- 4. Llamada final -->
+      <section class="cta-final">
+        <h2 class="section-title">Creemos una obra <em>para vos</em></h2>
+        <p>Contame sobre tu espacio y empezamos.</p>
+        <a class="button button-solid" href="encargos.html">Ver cómo funciona</a>
+      </section>
+
+    </main>
+
+    <footer class="site-footer">
+      <p>© 2026 Sofía Juarros · Buenos Aires, Argentina</p>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+    <script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js" defer></script>
+    <script src="js/main.js" defer></script>
+    <script src="js/menu.js" defer></script>
+  </body>
+</html>
