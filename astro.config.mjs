@@ -5,5 +5,5 @@ export default defineConfig({
   // La dirección pública de la web. Se usa para crear enlaces completos
   // (la tarjeta de WhatsApp, el mapa del sitio para Google...).
   // ⚠️ Si cambiás el nombre en Netlify o comprás un dominio, actualizalo acá.
-  site: 'https://merry-concha-108f81.netlify.app',
+  site: 'https://sofiajuarrosstudio.netlify.app',
 });
