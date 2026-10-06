@@ -211,41 +211,6 @@ import Lenis from 'lenis';
     }
   });
 
-  // 7. PUNTO DORADO QUE SIGUE AL CURSOR: solo en dispositivos con ratón (en móvil no hay cursor)
-  const cursor = document.querySelector('.cursor');
-  if (cursor && window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
-    gsap.set(cursor, { scale: 0 });   // escondido hasta que se mueva el ratón
-
-    // quickTo crea una función muy rápida para seguir al ratón con suavidad
-    const moverX = gsap.quickTo(cursor, 'x', { duration: 0.4, ease: 'power3' });
-    const moverY = gsap.quickTo(cursor, 'y', { duration: 0.4, ease: 'power3' });
-
-    // Tamaños del punto: 1 = normal, 2.2 = sobre una obra, 0 = escondido
-    const tamano = (escala) => gsap.to(cursor, { scale: escala, duration: 0.35, ease: 'power3.out' });
-    let visible = false;
-
-    window.addEventListener('mousemove', (e) => {
-      moverX(e.clientX);
-      moverY(e.clientY);
-      if (!visible) { visible = true; tamano(1); }   // aparece con el primer movimiento
-    });
-
-    // Si el ratón sale de la ventana, el punto se esconde
-    document.documentElement.addEventListener('mouseleave', () => { visible = false; tamano(0); });
-
-    // Sobre una obra, crece
-    document.querySelectorAll('.obra img, .h-obra img').forEach((img) => {
-      img.addEventListener('mouseenter', () => tamano(2.2));
-      img.addEventListener('mouseleave', () => tamano(1));
-    });
-
-    // Sobre el cuadro de la ficha se esconde, para no tapar la lupa
-    document.querySelectorAll('.ficha-imagen img').forEach((img) => {
-      img.addEventListener('mouseenter', () => tamano(0));
-      img.addEventListener('mouseleave', () => tamano(1));
-    });
-  }
-
-  // 8. Cuando terminan de cargar todas las imágenes, recalculamos las medidas
+  // 7. Cuando terminan de cargar todas las imágenes, recalculamos las medidas
   window.addEventListener('load', () => ScrollTrigger.refresh());
 })();
