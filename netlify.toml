@@ -1,0 +1,9 @@
+# Instrucciones para Netlify: cómo construir y publicar la web.
+# Cada vez que subamos cambios a GitHub, Netlify sigue estos pasos solo.
+
+[build]
+  command = "npm run build"   # fabrica la web
+  publish = "dist"            # la carpeta que se publica
+
+[build.environment]
+  NODE_VERSION = "24"         # la misma versión de Node que en tu ordenador
