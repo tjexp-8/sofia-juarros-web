@@ -1211,3 +1211,77 @@ a.contacto-item:hover .contacto-flecha {
 .error-404-botones .button-solid {
   width: auto;
 }
+
+/* =========================================
+   10. TRANSICIÓN ENTRE PÁGINAS (View Transitions)
+   El navegador "fotografía" la página vieja y la nueva, y anima
+   entre ellas. Las imágenes con el mismo view-transition-name
+   (obra-grieta-oro, obra-circulo...) viajan de un lugar a otro.
+   ========================================= */
+@media (prefers-reduced-motion: no-preference) {
+  @view-transition {
+    navigation: auto;       /* activa la transición al cambiar de página */
+  }
+}
+
+/* Todo lo que se mueve, con la misma curva elegante */
+::view-transition-group(*) {
+  animation-duration: 0.8s;
+  animation-timing-function: cubic-bezier(0.7, 0, 0.2, 1);
+}
+
+/* El resto de la página: fundido suave */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 0.5s;
+}
+
+/* =========================================
+   11. LUPA EN LA FICHA DE OBRA
+   ========================================= */
+.ficha-imagen {
+  position: relative;       /* la lupa se ubica respecto a este contenedor */
+}
+
+.con-lupa img {
+  cursor: none;             /* la lupa reemplaza al cursor */
+}
+
+.lupa {
+  position: absolute;
+  z-index: 5;
+  width: 190px;
+  height: 190px;
+  border-radius: 50%;
+  border: 1px solid rgba(244, 241, 235, 0.9);
+  box-shadow: 0 20px 50px -10px rgba(0, 0, 0, 0.6), inset 0 0 0 1px rgba(0, 0, 0, 0.2);
+  background-repeat: no-repeat;
+  background-color: #0E0E0E;
+  pointer-events: none;     /* no bloquea los clics */
+  transform: translate(-50%, -50%) scale(0.6);
+  opacity: 0;
+  transition: opacity 0.25s, transform 0.25s;
+}
+
+.lupa.visible {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.lupa-ayuda {
+  display: none;
+  margin-top: 1rem;
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  color: var(--color-suave);
+}
+
+.lupa-ayuda::before {
+  content: "◎ ";
+  color: var(--color-oro);
+}
+
+/* La ayuda solo aparece donde la lupa funciona (con ratón) */
+.con-lupa .lupa-ayuda {
+  display: block;
+}

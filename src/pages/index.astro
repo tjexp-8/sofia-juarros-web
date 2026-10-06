@@ -116,7 +116,8 @@ const numero = (i: number) => String(i + 1).padStart(2, '0');
         return (
           <figure class={`obra ${pos.clase}`} data-velocidad={pos.velocidad}>
             <a href={`/obras/${obra.id}`} class="obra-marco">
-              <Image src={obra.data.imagen} alt={obra.data.alt} />
+              {/* view-transition-name: el "nombre" que conecta esta imagen con la de su ficha */}
+              <Image src={obra.data.imagen} alt={obra.data.alt} style={`view-transition-name: obra-${obra.id}`} />
             </a>
             <figcaption>
               <span class="obra-numero">{numero(i)}</span>
