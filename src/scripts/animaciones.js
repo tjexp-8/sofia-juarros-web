@@ -58,6 +58,9 @@ import Lenis from 'lenis';
 
     // Calculamos cuánto hay que agrandar la imagen para que llene la pantalla.
     // (Limitado a 4.5 para que no se pixele demasiado.)
+    // La medimos SIN agrandar (el CSS ya la muestra ampliada): quitamos la escala un instante.
+    // Como todo pasa en el mismo momento, el navegador no llega a pintar ese cambio.
+    heroImg.style.transform = 'none';
     const r = heroImg.getBoundingClientRect();
     const puntoX = r.left + r.width * origenX;
     const puntoY = r.top + r.height * origenY;

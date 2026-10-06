@@ -7,6 +7,7 @@
   --color-texto: #1A1A1A;      /* casi negro */
   --color-suave: #6B665E;      /* gris cálido para textos secundarios */
   --color-oro: #B08D57;        /* acento: pan de oro, usar muy poco */
+  --color-oro-texto: #85642F;  /* oro más oscuro para LETRA CHICA sobre fondo claro (se lee mejor) */
 
   --fuente-titulos: "Instrument Serif", Georgia, serif;
   --fuente-texto: "Inter", system-ui, sans-serif;
@@ -243,9 +244,18 @@ body.menu-abierto {
   pointer-events: none;
 }
 
+/* La imagen se muestra YA agrandada desde el primer instante, sin esperar al JavaScript
+   (así la portada aparece rápido). Luego JavaScript ajusta la escala exacta. */
 .anim .hero-img {
   height: 58vh;
-  visibility: hidden;       /* JavaScript la muestra ya agrandada (evita un salto) */
+  transform-origin: 70% 45%;   /* el punto de la grieta dorada */
+  transform: scale(4.5);       /* pantallas horizontales (ordenador) */
+}
+
+@media (max-aspect-ratio: 1/1) {
+  .anim .hero-img {
+    transform: scale(2.2);     /* pantallas verticales (móvil, tablet) */
+  }
 }
 
 /* El estado inicial de la animación, ya desde el primer instante */
@@ -487,7 +497,7 @@ body.menu-abierto {
 .obra-numero {
   font-size: 0.7rem;
   letter-spacing: 0.15em;
-  color: var(--color-oro);
+  color: var(--color-oro-texto);
 }
 
 .obra-tecnica {
@@ -598,7 +608,7 @@ body.menu-abierto {
 }
 
 .estado {
-  color: var(--color-oro);
+  color: var(--color-oro-texto);
 }
 
 .ficha-texto {

@@ -7,3 +7,11 @@
 
 [build.environment]
   NODE_VERSION = "24"         # la misma versión de Node que en tu ordenador
+
+# Los archivos de /_astro/ llevan un código único en el nombre que cambia
+# cada vez que los modificamos. Por eso el navegador puede guardarlos
+# un año entero sin volver a pedirlos: la segunda visita es casi instantánea.
+[[headers]]
+  for = "/_astro/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"

@@ -67,7 +67,14 @@ const whatsapp = enlaceWhatsApp(
       <!-- Columna izquierda: la obra (con lupa al pasar el ratón) -->
       <div class="ficha-imagen" data-zoom={imagenLupa.src}>
         {/* Mismo view-transition-name que en la galería: así la imagen "viaja" entre páginas */}
-        <Image src={imagen} alt={alt} loading="eager" style={`view-transition-name: obra-${obra.id}`} />
+        <Image
+          src={imagen}
+          alt={alt}
+          loading="eager"
+          widths={[500, 800, 1200]}
+          sizes="(max-width: 1000px) 100vw, 58vw"
+          style={`view-transition-name: obra-${obra.id}`}
+        />
         <div class="lupa" aria-hidden="true"></div>
         <p class="lupa-ayuda">Pasá el cursor para ver la textura de cerca</p>
       </div>
@@ -107,7 +114,7 @@ const whatsapp = enlaceWhatsApp(
           {relacionadas.map((o) => (
             <figure class="obra">
               <a href={`/obras/${o.id}`}>
-                <Image src={o.data.imagen} alt={o.data.alt} style={`view-transition-name: obra-${o.id}`} />
+                <Image src={o.data.imagen} alt={o.data.alt} widths={[400, 600]} sizes="(max-width: 700px) 45vw, 30vw" style={`view-transition-name: obra-${o.id}`} />
               </a>
               <figcaption><em>{o.data.titulo}</em></figcaption>
             </figure>

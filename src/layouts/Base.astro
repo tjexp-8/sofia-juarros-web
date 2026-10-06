@@ -11,6 +11,19 @@ import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import { SITE } from '../config';
 import imagenPorDefecto from '../assets/obras/grieta-oro.jpg';
+
+// TIPOGRAFÍAS alojadas en nuestra propia web (antes se pedían a Google en cada visita).
+// Solo el alfabeto "latin", que incluye á é í ó ú ñ ¿ ¡: menos peso, carga más rápida.
+import '@fontsource/instrument-serif/latin-400.css';
+import '@fontsource/instrument-serif/latin-400-italic.css';
+import '@fontsource/inter/latin-300.css';
+import '@fontsource/inter/latin-400.css';
+import '@fontsource/inter/latin-500.css';
+// "?url" nos da la dirección del archivo, para pedirle al navegador que lo descargue cuanto antes
+import fuenteTitulos from '@fontsource/instrument-serif/files/instrument-serif-latin-400-normal.woff2?url';
+import fuenteTitulosCursiva from '@fontsource/instrument-serif/files/instrument-serif-latin-400-italic.woff2?url';
+import fuenteTexto from '@fontsource/inter/files/inter-latin-300-normal.woff2?url';
+
 import '../styles/global.css';
 
 interface Props {
@@ -65,13 +78,10 @@ const urlImagenTarjeta = new URL(imagenTarjeta.src, Astro.site);
       <script type="application/ld+json" set:html={JSON.stringify(datosEstructurados)} />
     )}
 
-    <!-- Tipografías: Instrument Serif (títulos) e Inter (textos) -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500&display=swap"
-      rel="stylesheet"
-    />
+    <!-- Las 3 tipografías más usadas se descargan con prioridad (preload) -->
+    <link rel="preload" href={fuenteTitulos} as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href={fuenteTitulosCursiva} as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href={fuenteTexto} as="font" type="font/woff2" crossorigin />
 
     <!-- Activa el modo animado ANTES de pintar la página (evita un parpadeo).
          is:inline = Astro deja este script tal cual, dentro del HTML. -->
