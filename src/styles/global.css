@@ -367,8 +367,18 @@ body.menu-abierto {
 }
 
 /* =========================================
-   4c. PUNTO DORADO QUE SIGUE AL CURSOR
+   4c. CURSOR: FLECHA DORADA + PUNTO QUE LA SIGUE
    ========================================= */
+
+/* La flecha del ratón, dorada. "3 2" es la punta de la flecha dentro del dibujo
+   (el punto exacto que hace clic). "auto" = flecha normal si el dibujo no carga.
+   Solo en dispositivos con ratón. Los enlaces conservan la manito normal. */
+@media (hover: hover) and (pointer: fine) {
+  html {
+    cursor: url('/cursor.svg') 3 2, auto;
+  }
+}
+
 .cursor {
   position: fixed;
   top: 0;
