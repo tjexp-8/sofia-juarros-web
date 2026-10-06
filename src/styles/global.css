@@ -374,18 +374,19 @@ body.menu-abierto {
   top: 0;
   left: 0;
   z-index: 100;
-  width: 56px;
-  height: 56px;
-  margin: -28px 0 0 -28px;  /* la mitad del tamaño: centra el círculo en la punta del ratón */
+  width: 32px;
+  height: 32px;
+  margin: -16px 0 0 -16px;  /* la mitad del tamaño: centra el círculo en la punta del ratón */
   border-radius: 50%;
   background-color: var(--color-oro); /* dorado: se ve sobre obras claras y oscuras */
   color: var(--color-texto);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 0.6rem;
-  letter-spacing: 0.15em;
-  padding-left: 0.15em;     /* compensa el espacio extra que deja letter-spacing tras la última letra */
+  font-size: 0.5rem;
+  font-weight: 500;         /* un poco más gruesa para que se lea en tamaño chico */
+  letter-spacing: 0.1em;
+  padding-left: 0.1em;      /* compensa el espacio extra que deja letter-spacing tras la última letra */
   text-transform: uppercase;
   pointer-events: none;     /* el círculo no bloquea los clics */
   transform: scale(0);
