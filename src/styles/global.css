@@ -1169,3 +1169,45 @@ a.contacto-item:hover .contacto-flecha {
     padding: 5rem var(--margen);
   }
 }
+
+/* =========================================
+   9. PÁGINA 404 (dirección que no existe)
+   ========================================= */
+.error-404 {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 8rem var(--margen) 4rem;
+}
+
+.error-404-numero {
+  font-family: var(--fuente-titulos);
+  font-weight: 400;
+  font-size: clamp(8rem, 30vw, 22rem);
+  line-height: 0.85;
+  letter-spacing: -0.04em;
+}
+
+.error-404-numero em {
+  color: var(--color-oro);   /* el 0 en dorado, como la grieta */
+}
+
+.error-404-texto {
+  font-family: var(--fuente-titulos);
+  font-size: clamp(1.4rem, 3vw, 2rem);
+  margin: 2rem 0 3rem;
+}
+
+.error-404-botones {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.error-404-botones .button-solid {
+  width: auto;
+}

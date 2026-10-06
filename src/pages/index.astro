@@ -28,11 +28,22 @@ const posiciones = [
   { clase: 'g-7', velocidad: 5 },
 ];
 
+// Datos para Google: "esta web es de una artista visual de Buenos Aires"
+const datosArtista = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: 'Sofía Juarros',
+  jobTitle: 'Artista visual',
+  url: Astro.site?.toString(),
+  address: { '@type': 'PostalAddress', addressLocality: 'Buenos Aires', addressCountry: 'AR' },
+  sameAs: ['https://www.instagram.com/sofiartstudio__/'],
+};
+
 // Convierte 1 en "01", 2 en "02"...
 const numero = (i: number) => String(i + 1).padStart(2, '0');
 ---
 
-<Base>
+<Base datosEstructurados={datosArtista}>
   <!-- 1. PORTADA: empieza con un primer plano de la obra y se aleja al hacer scroll -->
   <section class="hero">
     <div class="hero-bg"></div>

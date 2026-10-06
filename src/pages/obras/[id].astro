@@ -35,12 +35,28 @@ const textosEstado = {
   vendida: 'Vendida',
 };
 
+// Datos para Google: "esta página es una obra de arte de tal artista"
+const datosObra = {
+  '@context': 'https://schema.org',
+  '@type': 'VisualArtwork',
+  name: titulo,
+  artMedium: tecnica,
+  artform: 'Pintura',
+  creator: { '@type': 'Person', name: 'Sofía Juarros' },
+  ...(anio && { dateCreated: String(anio) }),
+};
+
 const whatsapp = enlaceWhatsApp(
   `Hola Sofía, vi la obra "${titulo}" en tu web y me interesa una obra así.`
 );
 ---
 
-<Base titulo={titulo} descripcion={`${titulo}, obra de Sofía Juarros. ${tecnica}. Disponible por encargo en Buenos Aires.`}>
+<Base
+  titulo={titulo}
+  descripcion={`${titulo}, obra de Sofía Juarros. ${tecnica}. Disponible por encargo en Buenos Aires.`}
+  imagen={imagen}
+  datosEstructurados={datosObra}
+>
   <div class="ficha">
     <a href="/#obras" class="volver">← Volver a obras</a>
 

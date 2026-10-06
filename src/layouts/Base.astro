@@ -5,22 +5,35 @@
    cabecera, pie y scripts. Cada página solo aporta su contenido,
    que aparece donde dice <slot />.
    ========================================================= */
+import { getImage } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import { SITE } from '../config';
+import imagenPorDefecto from '../assets/obras/grieta-oro.jpg';
 import '../styles/global.css';
 
 interface Props {
   titulo?: string;
   descripcion?: string;
+  imagen?: ImageMetadata;            // imagen para la tarjeta al compartir el enlace
+  datosEstructurados?: object;       // información extra para Google (ver más abajo)
 }
 
-const { titulo, descripcion = SITE.descripcion } = Astro.props;
+const { titulo, descripcion = SITE.descripcion, imagen = imagenPorDefecto, datosEstructurados } = Astro.props;
 
 // Si la página tiene título propio: "Encargos — Sofía Juarros". Si no, el general.
 const tituloCompleto = titulo
   ? `${titulo} — ${SITE.nombre}`
   : `${SITE.nombre} — Arte abstracto contemporáneo`;
+
+// La dirección completa de esta página (ej: https://.../encargos)
+const urlCanonica = new URL(Astro.url.pathname, Astro.site);
+
+// TARJETA PARA COMPARTIR: WhatsApp, Instagram, Facebook... muestran una imagen
+// de 1200 × 630 px. Astro recorta la obra a ese tamaño automáticamente.
+const imagenTarjeta = await getImage({ src: imagen, width: 1200, height: 630, fit: 'cover', format: 'jpg' });
+const urlImagenTarjeta = new URL(imagenTarjeta.src, Astro.site);
 ---
 
 <!DOCTYPE html>
@@ -30,6 +43,27 @@ const tituloCompleto = titulo
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{tituloCompleto}</title>
     <meta name="description" content={descripcion} />
+
+    <!-- Le dice a Google cuál es la dirección "oficial" de esta página -->
+    <link rel="canonical" href={urlCanonica} />
+
+    <!-- Icono de la pestaña del navegador -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <!-- Open Graph: la tarjeta que aparece al compartir el enlace -->
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="es_AR" />
+    <meta property="og:site_name" content={SITE.nombre} />
+    <meta property="og:title" content={tituloCompleto} />
+    <meta property="og:description" content={descripcion} />
+    <meta property="og:url" content={urlCanonica} />
+    <meta property="og:image" content={urlImagenTarjeta} />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <!-- Datos estructurados: Google entiende "esto es una artista" / "esto es una obra" -->
+    {datosEstructurados && (
+      <script type="application/ld+json" set:html={JSON.stringify(datosEstructurados)} />
+    )}
 
     <!-- Tipografías: Instrument Serif (títulos) e Inter (textos) -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
